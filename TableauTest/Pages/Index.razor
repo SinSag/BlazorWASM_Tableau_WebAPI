@@ -1,0 +1,20 @@
+﻿@page "/"
+
+@inject IJSRuntime JSRuntime
+
+<h3>Visualization</h3>
+
+
+<div id="vizContainer" style="width:800px; height:700px;"></div>
+
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("initViz", null);
+            StateHasChanged();
+        }
+    }
+}
